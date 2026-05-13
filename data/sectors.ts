@@ -1,0 +1,58 @@
+import type { Sector } from '@/types'
+
+export const sectors: Sector[] = [
+  {
+    id: 'sector-1',
+    slug: 'real-estate',
+    icon: 'Building2',
+    titleKey: 'sectors.realEstate.title',
+    descriptionKey: 'sectors.realEstate.description',
+    color: '#B8973A',
+    imageUrl: '/images/sectors/real-estate.jpg',
+  },
+  {
+    id: 'sector-2',
+    slug: 'technology',
+    icon: 'Cpu',
+    titleKey: 'sectors.technology.title',
+    descriptionKey: 'sectors.technology.description',
+    color: '#2563EB',
+    imageUrl: '/images/sectors/technology.jpg',
+  },
+  {
+    id: 'sector-3',
+    slug: 'contracting',
+    icon: 'HardHat',
+    titleKey: 'sectors.contracting.title',
+    descriptionKey: 'sectors.contracting.description',
+    color: '#D97706',
+    imageUrl: '/images/sectors/contracting.jpg',
+  },
+  {
+    id: 'sector-4',
+    slug: 'hospitality',
+    icon: 'Hotel',
+    titleKey: 'sectors.hospitality.title',
+    descriptionKey: 'sectors.hospitality.description',
+    color: '#7C3AED',
+    imageUrl: '/images/sectors/hospitality.jpg',
+  },
+  {
+    id: 'sector-5',
+    slug: 'trading',
+    icon: 'TrendingUp',
+    titleKey: 'sectors.trading.title',
+    descriptionKey: 'sectors.trading.description',
+    color: '#059669',
+    imageUrl: '/images/sectors/trading.jpg',
+  },
+  {
+    id: 'sector-6',
+    slug: 'logistics',
+    icon: 'Truck',
+    titleKey: 'sectors.logistics.title',
+    descriptionKey: 'sectors.logistics.description',
+    color: '#DC2626',
+    imageUrl: '/images/sectors/logistics.jpg',
+  },
+]

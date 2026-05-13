@@ -1,0 +1,252 @@
+{
+  "HomePage": {
+    "title": "SUCCESS Group"
+  },
+  "meta": {
+    "home": {
+      "title": "SUCCESS Group | Building Tomorrow's Saudi Economy",
+      "description": "A diversified Saudi holding company driving growth across real estate, technology, contracting, hospitality, trading, and logistics."
+    },
+    "about": {
+      "title": "About Us | SUCCESS Group",
+      "description": "Learn about SUCCESS Group's journey, vision, and the values that drive us forward."
+    },
+    "sectors": {
+      "title": "Our Sectors | SUCCESS Group",
+      "description": "Explore the six key sectors where SUCCESS Group operates and creates value."
+    },
+    "subsidiaries": {
+      "title": "Our Companies | SUCCESS Group",
+      "description": "Discover the portfolio of specialized companies within the SUCCESS Group."
+    },
+    "structure": {
+      "title": "Group Structure | SUCCESS Group",
+      "description": "An integrated network of specialized companies under one vision."
+    },
+    "projects": {
+      "title": "Projects | SUCCESS Group",
+      "description": "Landmark projects delivered and underway across all our sectors."
+    },
+    "partners": {
+      "title": "Our Partners | SUCCESS Group",
+      "description": "Trusted partnerships with leading organizations across the Kingdom."
+    },
+    "news": {
+      "title": "News & Updates | SUCCESS Group",
+      "description": "Stay informed on the latest developments from across the SUCCESS group."
+    },
+    "careers": {
+      "title": "Careers | SUCCESS Group",
+      "description": "Build your career at SUCCESS Group. Explore open positions across our companies."
+    },
+    "contact": {
+      "title": "Contact Us | SUCCESS Group",
+      "description": "Get in touch with SUCCESS Group. We're here to help with inquiries, partnerships, and more."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "sectors": "Sectors",
+    "companies": "Companies",
+    "subsidiaries": "Companies",
+    "structure": "Structure",
+    "projects": "Projects",
+    "partners": "Partners",
+    "news": "News",
+    "careers": "Careers",
+    "contact": "Contact",
+    "contactUs": "Contact Us"
+  },
+  "footer": {
+    "description": "A diversified Saudi holding company building tomorrow's economy across six key sectors.",
+    "company": "Company",
+    "explore": "Explore",
+    "media": "Media",
+    "copyright": "© {year} SUCCESS Group. All rights reserved."
+  },
+  "hero": {
+    "tagline": "Building the Future of Saudi Arabia",
+    "subtext": "A diversified holding company driving growth across real estate, technology, contracting, hospitality, trading, and logistics.",
+    "ctaExplore": "Explore Our Sectors",
+    "ctaAbout": "Learn About Us"
+  },
+  "stats": {
+    "yearsOfExcellence": "Years of Excellence",
+    "companies": "Companies",
+    "sectors": "Sectors",
+    "employees": "Employees"
+  },
+  "sectors": {
+    "realEstate": {
+      "title": "Real Estate",
+      "description": "Shaping the urban landscape with world-class residential and commercial developments."
+    },
+    "technology": {
+      "title": "Technology",
+      "description": "Driving digital transformation through enterprise software and AI-powered solutions."
+    },
+    "contracting": {
+      "title": "Contracting",
+      "description": "Full-service construction and infrastructure delivery across the GCC region."
+    },
+    "hospitality": {
+      "title": "Hospitality",
+      "description": "Premium hotel and resort management defining Saudi Arabian elegance."
+    },
+    "trading": {
+      "title": "Trading",
+      "description": "Import-export and commodity trading managing supply chains across MENA."
+    },
+    "logistics": {
+      "title": "Logistics",
+      "description": "End-to-end logistics solutions from warehousing to last-mile delivery."
+    }
+  },
+  "sectorsSection": {
+    "title": "Our Sectors",
+    "subtitle": "Six pillars of growth driving the SUCCESS vision forward."
+  },
+  "subsidiariesSection": {
+    "title": "Our Companies",
+    "subtitle": "A portfolio of specialized companies delivering excellence across every sector.",
+    "viewAll": "View All Companies"
+  },
+  "partnersSection": {
+    "title": "Our Partners",
+    "subtitle": "Trusted by leading organizations across the Kingdom and beyond."
+  },
+  "newsSection": {
+    "title": "Latest News",
+    "subtitle": "Stay informed on the latest developments from across the SUCCESS group.",
+    "viewAll": "View All News"
+  },
+  "groupStructure": {
+    "title": "Group Structure",
+    "subtitle": "An integrated network of specialized companies under one vision."
+  },
+  "aboutSnippet": {
+    "label": "Who We Are",
+    "title": "A Legacy of Excellence Since 1999",
+    "description": "SUCCESS Group is a premier Saudi holding company with over two decades of experience across real estate, technology, contracting, hospitality, trading, and logistics. We are committed to building a diversified, future-ready portfolio aligned with Saudi Vision 2030.",
+    "cta": "Learn More About Us"
+  },
+  "about": {
+    "hero": {
+      "title": "About SUCCESS Group",
+      "subtitle": "Over two decades of building excellence across the Kingdom."
+    },
+    "story": {
+      "label": "Our Story",
+      "title": "A Journey of Growth & Impact",
+      "paragraph1": "Founded in 1999, SUCCESS Group began as a contracting firm in Riyadh. Through strategic diversification and a commitment to quality, the group has grown into one of Saudi Arabia's most dynamic holding companies, operating across six key sectors.",
+      "paragraph2": "Today, with 12 specialized subsidiaries and over 1,500 employees, we continue to expand our reach and deepen our impact — contributing meaningfully to Saudi Vision 2030 and the Kingdom's economic transformation."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "text": "To be the most trusted and diversified holding group in Saudi Arabia, recognized for excellence, innovation, and meaningful contribution to the nation's economic future."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "text": "To build, operate, and invest in world-class businesses that create lasting value for our stakeholders, communities, and the Kingdom at large."
+    },
+    "values": {
+      "title": "Our Values",
+      "integrity": {
+        "title": "Integrity",
+        "description": "We uphold the highest standards of honesty, transparency, and ethical conduct in every interaction."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We embrace new ideas, technologies, and approaches to stay ahead in a rapidly evolving world."
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "We believe in the power of partnerships — within our group and with external stakeholders."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "We pursue the highest quality in everything we do, from strategy to execution."
+      }
+    },
+    "leadership": {
+      "title": "Our Leadership",
+      "ceo.name": "Abdulrahman Al-Rashid",
+      "ceo.role": "Chairman & CEO",
+      "coo.name": "Khalid Al-Dosari",
+      "coo.role": "Chief Operating Officer",
+      "cfo.name": "Fahad Al-Otaibi",
+      "cfo.role": "Chief Financial Officer",
+      "cto.name": "Sarah Al-Mutairi",
+      "cto.role": "Chief Technology Officer"
+    }
+  },
+  "careers": {
+    "hero": {
+      "label": "Careers",
+      "title": "Build Your Career at SUCCESS",
+      "subtitle": "Join a team that's shaping the future of Saudi Arabia's economy."
+    },
+    "culture": {
+      "title": "Why SUCCESS?",
+      "growth": {
+        "title": "Growth & Development",
+        "description": "Continuous learning programs, mentorship, and clear career progression across our diverse portfolio."
+      },
+      "teamwork": {
+        "title": "Collaborative Culture",
+        "description": "Work alongside talented professionals across multiple industries in an environment that values every voice."
+      },
+      "impact": {
+        "title": "Meaningful Impact",
+        "description": "Contribute to nation-building projects that shape communities and drive Saudi Vision 2030 forward."
+      }
+    },
+    "positions": {
+      "title": "Open Positions"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Get in Touch",
+      "subtitle": "We'd love to hear from you. Reach out for inquiries, partnerships, or any questions."
+    },
+    "info": {
+      "title": "Contact Information",
+      "phone": {
+        "label": "Phone",
+        "value": "+966 11 XXX XXXX"
+      },
+      "email": {
+        "label": "Email",
+        "value": "info@success-group.sa"
+      },
+      "address": {
+        "label": "Address",
+        "value": "King Fahd Road, Riyadh, Saudi Arabia"
+      },
+      "hours": {
+        "label": "Office Hours",
+        "value": "Sunday – Thursday, 8:00 AM – 5:00 PM"
+      }
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "name": "Full Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email",
+      "phone": "Phone (optional)",
+      "phonePlaceholder": "+966 5XX XXX XXXX",
+      "subject": "Subject",
+      "subjectPlaceholder": "Select a subject",
+      "message": "Message",
+      "messagePlaceholder": "How can we help you?",
+      "submit": "Send Message",
+      "success": {
+        "title": "Message Sent!",
+        "message": "Thank you for reaching out. We'll get back to you within 1-2 business days."
+      }
+    }
+  }
+}
