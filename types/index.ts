@@ -6,6 +6,17 @@ export interface Sector {
   descriptionKey: string
   color?: string
   imageUrl?: string
+  nameEn?: string
+  nameAr?: string
+  companyEn?: string
+  companyAr?: string
+  descEn?: string
+  descAr?: string
+  longDescEn?: string
+  longDescAr?: string
+  image?: string
+  category?: string
+  size?: 'sm' | 'md' | 'lg'
 }
 
 export interface Subsidiary {

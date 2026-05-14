@@ -3,24 +3,25 @@ import type { Stat } from '@/types'
 export const stats: Stat[] = [
   {
     id: 'stat-1',
-    value: 25,
+    value: 15,
     suffix: '+',
-    labelKey: 'stats.yearsOfExcellence',
+    labelKey: 'stats.yearsOfExperience',
   },
   {
     id: 'stat-2',
-    value: 12,
-    labelKey: 'stats.companies',
+    value: 25,
+    suffix: '+',
+    labelKey: 'stats.strategicPartners',
   },
   {
     id: 'stat-3',
-    value: 6,
-    labelKey: 'stats.sectors',
+    value: 11,
+    labelKey: 'stats.businessSectors',
   },
   {
     id: 'stat-4',
-    value: 1500,
+    value: 300,
     suffix: '+',
-    labelKey: 'stats.employees',
+    labelKey: 'stats.outstandingEmployees',
   },
 ]

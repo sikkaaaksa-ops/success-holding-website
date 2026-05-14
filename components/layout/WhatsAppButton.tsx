@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
+import { siteConfig } from '@/data/siteContent';
 
 const WHATSAPP_NUMBER =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '966500000000';
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || siteConfig.whatsapp;
 
 function WhatsAppIcon() {
   return (

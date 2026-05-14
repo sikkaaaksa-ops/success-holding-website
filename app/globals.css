@@ -1,3 +1,21 @@
+@font-face {
+  font-family: "Hacen Algeria HD";
+  src: url("/fonts/HacenAlgeriaHD.woff2") format("woff2"),
+       url("/fonts/HacenAlgeriaHD.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hacen Algeria";
+  src: url("/fonts/HacenAlgeria.woff2") format("woff2"),
+       url("/fonts/HacenAlgeria.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "tailwindcss";
 
 @theme inline {
@@ -11,9 +29,9 @@
   --color-brand-gray-dark: #6B6560;
   --color-brand-beige: #EDE8DF;
 
-  --font-heading: var(--font-heading);
-  --font-body: var(--font-body);
-  --font-arabic: var(--font-arabic);
+  --font-heading: "Hacen Algeria HD", 'Cormorant Garamond', serif;
+  --font-body: "Hacen Algeria", 'DM Sans', sans-serif;
+  --font-arabic: "Hacen Algeria", 'IBM Plex Sans Arabic', sans-serif;
 }
 
 html {
@@ -25,6 +43,7 @@ body {
   color: var(--color-brand-dark);
 }
 
+/* ── WhatsApp pulse ── */
 @keyframes whatsapp-pulse {
   0% {
     transform: scale(1);
@@ -42,4 +61,58 @@ body {
 
 .whatsapp-pulse {
   animation: whatsapp-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ── Hero background ── */
+.hero-bg {
+  background-image:
+    linear-gradient(to bottom, rgba(18,18,12,.15) 0%, rgba(18,18,12,.68) 100%),
+    var(--hero-image, url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=85"));
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* ── Sector card "Read More" button ── */
+.sector-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 13px;
+  padding: 7px 18px;
+  font-size: 10.5px;
+  font-weight: 300;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.28);
+  background: transparent;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .38s ease, transform .38s ease, background .28s ease, border-color .28s ease;
+}
+.group:hover .sector-read-more {
+  opacity: 1;
+  transform: translateY(0);
+  background: rgba(192,144,64,.22);
+  border-color: rgba(192,144,64,.55);
+}
+
+/* ── Partner marquee ── */
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marqueeRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.marquee-track { display: flex; width: max-content; will-change: transform; }
+.marquee-track--right { animation: marqueeRight 34s linear infinite; }
+.marquee-track--left { animation: marqueeLeft 34s linear infinite; }
+.marquee-row:hover .marquee-track { animation-play-state: paused; }
+.marquee-row {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }

@@ -6,6 +6,9 @@ import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/layout/WhatsAppButton';
 import '../globals.css';
 
+// Primary fonts: Hacen Algeria (HD for headings, regular for body).
+// Font files go in /public/fonts/ — see public/fonts/.gitkeep.
+// Google Fonts below serve as fallbacks until Hacen files are placed.
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],

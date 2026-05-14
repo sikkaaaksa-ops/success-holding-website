@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { siteConfig, footerContent } from '@/data/siteContent';
 
 function LinkedInIcon({ size = 20 }: { size?: number }) {
   return (
@@ -28,18 +29,7 @@ function InstagramIcon({ size = 20 }: { size?: number }) {
   );
 }
 
-const NAV_ITEMS = [
-  { key: 'home', href: '' },
-  { key: 'about', href: '/about' },
-  { key: 'sectors', href: '/sectors' },
-  { key: 'companies', href: '/companies' },
-  { key: 'structure', href: '/structure' },
-  { key: 'projects', href: '/projects' },
-  { key: 'partners', href: '/partners' },
-  { key: 'news', href: '/news' },
-  { key: 'careers', href: '/careers' },
-  { key: 'contact', href: '/contact' },
-];
+const NAV_ITEMS = footerContent.navItems;
 
 export default function Footer() {
   const nav = useTranslations('nav');
@@ -60,7 +50,7 @@ export default function Footer() {
               href={`/${locale}`}
               className="font-heading text-2xl tracking-[0.25em] text-brand-gold uppercase"
             >
-              SUCCESS
+              {siteConfig.brandName}
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-brand-gray">
               {t('tagline')}
@@ -119,7 +109,7 @@ export default function Footer() {
             </h3>
             <div className="flex items-center gap-4">
               <a
-                href="https://linkedin.com"
+                href={siteConfig.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -128,7 +118,7 @@ export default function Footer() {
                 <LinkedInIcon />
               </a>
               <a
-                href="https://twitter.com"
+                href={siteConfig.social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter / X"
@@ -137,7 +127,7 @@ export default function Footer() {
                 <XIcon />
               </a>
               <a
-                href="https://instagram.com"
+                href={siteConfig.social.instagram || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"

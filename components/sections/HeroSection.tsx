@@ -5,6 +5,9 @@ import { ChevronDown } from 'lucide-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { fadeUp, staggerContainer } from '@/lib/motionVariants'
 import Button from '@/components/ui/Button'
+import { heroContent } from '@/data/siteContent'
+
+const HERO_IMAGE = "" // Set to "/images/hero/hero.jpg" after uploading image
 
 export default function HeroSection() {
   const t = useTranslations('hero')
@@ -13,7 +16,8 @@ export default function HeroSection() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       <div
-        className="absolute inset-0 bg-gradient-to-b from-brand-charcoal via-brand-dark to-brand-charcoal"
+        className="hero-bg absolute inset-0 z-0"
+        style={HERO_IMAGE ? { ["--hero-image" as string]: `url("${HERO_IMAGE}")` } : undefined}
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(184,151,58,0.08)_0%,transparent_70%)]" aria-hidden="true" />
@@ -28,7 +32,7 @@ export default function HeroSection() {
           variants={fadeUp}
           className="text-sm uppercase tracking-[0.3em] text-brand-gold"
         >
-          SUCCESS GROUP
+          {heroContent.labelEn}
         </motion.p>
 
         <motion.h1

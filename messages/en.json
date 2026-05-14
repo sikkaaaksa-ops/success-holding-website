@@ -75,7 +75,11 @@
     "yearsOfExcellence": "Years of Excellence",
     "companies": "Companies",
     "sectors": "Sectors",
-    "employees": "Employees"
+    "employees": "Employees",
+    "yearsOfExperience": "Years of Experience",
+    "strategicPartners": "Strategic Partners",
+    "businessSectors": "Business Sectors",
+    "outstandingEmployees": "Outstanding Employees"
   },
   "sectors": {
     "realEstate": {
@@ -101,6 +105,38 @@
     "logistics": {
       "title": "Logistics",
       "description": "End-to-end logistics solutions from warehousing to last-mile delivery."
+    },
+    "investment": {
+      "title": "Investment",
+      "description": "Strategic investment portfolio across diversified sectors aligned with Vision 2030."
+    },
+    "construction": {
+      "title": "Construction",
+      "description": "Large-scale infrastructure and building projects with world-class standards."
+    },
+    "marketing": {
+      "title": "Marketing & Media",
+      "description": "Creative marketing, branding, and media production for leading Saudi brands."
+    },
+    "maintenance": {
+      "title": "Maintenance & Operations",
+      "description": "Comprehensive facility management and technical maintenance services."
+    },
+    "tourism": {
+      "title": "Tourism & Hospitality",
+      "description": "Premium hospitality and tourism experiences showcasing Saudi heritage."
+    },
+    "education": {
+      "title": "Education & Training",
+      "description": "Professional development and educational programs empowering Saudi talent."
+    },
+    "software": {
+      "title": "Software Development",
+      "description": "Custom software solutions, mobile apps, and digital products."
+    },
+    "incubation": {
+      "title": "Business Incubation",
+      "description": "Startup incubation and acceleration programs for the next generation of entrepreneurs."
     }
   },
   "sectorsSection": {

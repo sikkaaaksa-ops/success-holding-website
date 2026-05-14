@@ -7,19 +7,9 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+import { siteConfig, navContent } from '@/data/siteContent';
 
-const NAV_ITEMS = [
-  { key: 'home', href: '' },
-  { key: 'about', href: '/about' },
-  { key: 'sectors', href: '/sectors' },
-  { key: 'companies', href: '/subsidiaries' },
-  { key: 'structure', href: '/structure' },
-  { key: 'projects', href: '/projects' },
-  { key: 'partners', href: '/partners' },
-  { key: 'news', href: '/news' },
-  { key: 'careers', href: '/careers' },
-  { key: 'contact', href: '/contact' },
-];
+const NAV_ITEMS = navContent.items;
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -65,7 +55,7 @@ export default function Navbar() {
               href={`/${locale}`}
               className="font-heading text-2xl tracking-[0.25em] text-brand-gold uppercase"
             >
-              SUCCESS
+              {siteConfig.brandName}
             </Link>
 
             {/* Desktop nav */}
@@ -129,7 +119,7 @@ export default function Navbar() {
                 href={`/${locale}`}
                 className="font-heading text-2xl tracking-[0.25em] text-brand-gold uppercase"
               >
-                SUCCESS
+                {siteConfig.brandName}
               </Link>
               <button
                 onClick={() => setMobileOpen(false)}
