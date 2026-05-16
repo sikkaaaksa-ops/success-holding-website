@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 interface SectionHeaderProps {
   title: string;
   subtitle?: string;
-  align?: 'left' | 'center';
+  align?: 'start' | 'center' | 'left';
 }
 
 export default function SectionHeader({
@@ -23,7 +23,7 @@ export default function SectionHeader({
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`mb-12 ${isCenter ? 'text-center' : 'text-start'}`}
     >
-      <h2 className="font-heading text-3xl lg:text-4xl text-brand-dark mb-4">
+      <h2 className="font-display text-3xl lg:text-4xl text-brand-dark mb-4">
         {title}
       </h2>
       <div

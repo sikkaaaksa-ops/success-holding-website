@@ -25,7 +25,14 @@ export interface Subsidiary {
   name: { en: string; ar: string }
   sector: string
   logoUrl: string
+  /** Fallback / SEO description */
   description: { en: string; ar: string }
+  /** One-line teaser for cards (homepage / grid) */
+  cardTeaser?: { en: string; ar: string }
+  /** Detail subtitle / tagline */
+  tagline?: { en: string; ar: string }
+  /** Long body; use \\n\\n between paragraphs */
+  body?: { en: string; ar: string }
   founded?: number
   website?: string
   highlights: { en: string[]; ar: string[] }
@@ -57,6 +64,8 @@ export interface Partner {
   logoUrl: string
   website?: string
   category?: string
+  hasBg?: boolean
+  hasDarkBg?: boolean
 }
 
 export interface NewsArticle {

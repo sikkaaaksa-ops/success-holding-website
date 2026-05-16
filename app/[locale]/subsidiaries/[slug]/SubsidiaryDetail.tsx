@@ -1,10 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
-import { ExternalLink, ArrowLeft, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { fadeUp, staggerContainer } from '@/lib/motionVariants'
-import { useLocale } from 'next-intl'
 import type { Subsidiary } from '@/types'
 import SubsidiaryCard from '@/components/cards/SubsidiaryCard'
 
@@ -14,109 +13,170 @@ interface SubsidiaryDetailProps {
   locale: string
 }
 
+function coverSrc(sub: Subsidiary): string {
+  return sub.coverImageUrl ?? sub.logoUrl
+}
+
 export default function SubsidiaryDetail({ subsidiary, relatedCompanies, locale }: SubsidiaryDetailProps) {
   const lang = locale as 'en' | 'ar'
   const name = subsidiary.name[lang]
-  const description = subsidiary.description[lang]
-  const highlights = subsidiary.highlights[lang]
-  const BackArrow = locale === 'ar' ? ArrowRight : ArrowLeft
+  const img = coverSrc(subsidiary)
+  const tagline = subsidiary.tagline?.[lang]
+  const bodyText = subsidiary.body?.[lang] ?? subsidiary.description[lang]
+  const paragraphs = bodyText
+    .split(/\n\n+/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+  const features = subsidiary.highlights[lang]
+
+  const backLabel =
+    locale === 'ar' ? 'العودة إلى الشركات' : 'Back to Companies'
+  const featuresTitle = locale === 'ar' ? 'المميزات' : 'Highlights'
 
   return (
     <>
-      {/* Cover image area */}
-      <section className="relative flex min-h-[35vh] items-end bg-brand-charcoal pt-16">
-        <div className="absolute inset-0 flex items-center justify-center bg-brand-beige/5">
-          <span className="text-sm uppercase tracking-widest text-brand-gray/40">
-            {locale === 'ar' ? 'صورة الغلاف' : 'Cover Image'}
-          </span>
+      <section className="relative min-h-[min(52vh,420px)] pt-16">
+        <div className="absolute inset-0">
+          <Image
+            src={img}
+            alt=""
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(13,12,10,0.72)_0%,rgba(13,12,10,0.35)_42%,rgba(13,12,10,0.82)_100%)]"
+            aria-hidden
+          />
         </div>
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-8 lg:px-12">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col px-6 pb-12 pt-6 lg:px-10 lg:pb-14 lg:pt-8">
           <Link
             href={`/${locale}/subsidiaries`}
-            className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-brand-gold transition-colors mb-4"
+            className="inline-flex items-center gap-2 self-start rounded-full border border-white/25 bg-black/25 px-3 py-2 text-[0.8rem] font-medium text-white backdrop-blur-sm transition-colors hover:border-[#C09040]/55 hover:bg-black/35"
           >
-            <BackArrow size={16} />
-            {locale === 'ar' ? 'العودة إلى الشركات' : 'Back to Companies'}
+            <span className="rtl:rotate-180" aria-hidden>
+              ‹
+            </span>
+            {backLabel}
           </Link>
+          <div className="mt-10 lg:mt-14">
+            {tagline && (
+              <p className="text-[0.95rem] font-medium leading-snug text-[#D4B56A] md:text-[1rem] lg:max-w-2xl">
+                {tagline}
+              </p>
+            )}
+            <h1 className="mt-4 font-display text-[2rem] font-semibold leading-[1.12] tracking-tight text-white md:text-4xl lg:text-[2.65rem]">
+              {name}
+            </h1>
+          </div>
         </div>
       </section>
 
-      {/* Main content */}
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+      <section
+        dir={locale === 'ar' ? 'rtl' : 'ltr'}
+        className="relative z-10 -mt-6 bg-[#FAF8F4] pb-16 pt-10 lg:-mt-8 lg:pb-24 lg:pt-14"
+      >
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
+            className="overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-[0_12px_50px_-24px_rgba(13,12,10,0.2)] ring-1 ring-black/[0.04]"
           >
-            {/* Header */}
-            <motion.div variants={fadeUp}>
-              <span className="inline-block bg-brand-offwhite px-3 py-1 text-xs font-medium uppercase tracking-wider text-brand-gold">
-                {subsidiary.sector}
-              </span>
-              <h1 className="mt-4 font-heading text-3xl font-semibold text-brand-dark md:text-5xl">
-                {name}
-              </h1>
-              {subsidiary.founded && (
-                <p className="mt-2 text-sm text-brand-gray-dark">
-                  {locale === 'ar' ? `تأسست عام ${subsidiary.founded}` : `Founded ${subsidiary.founded}`}
-                </p>
-              )}
-            </motion.div>
+            <div className="grid grid-cols-1 gap-0 lg:grid-cols-12">
+              <div className="space-y-[1.1rem] px-8 py-9 text-start lg:col-span-7 lg:p-11 lg:pe-10 lg:ps-11">
+                {paragraphs.map((para, idx) => (
+                  <motion.p
+                    key={`${subsidiary.id}-p-${idx}`}
+                    variants={fadeUp}
+                    className="text-[0.975rem] leading-[1.9] text-brand-gray-dark md:text-[1.035rem]"
+                  >
+                    {para}
+                  </motion.p>
+                ))}
+              </div>
+              <div className="border-t border-stone-200/80 bg-stone-100/70 lg:col-span-5 lg:border-s lg:border-t-0 lg:border-stone-200/80 rtl:border-s-0 rtl:border-e">
+                <div className="relative mx-auto aspect-[5/6] max-h-[300px] w-full overflow-hidden lg:sticky lg:top-28 lg:m-0 lg:aspect-auto lg:max-h-none lg:min-h-[340px]">
+                  <Image
+                    src={img}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 38vw, 100vw"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-            {/* Description */}
-            <motion.div variants={fadeUp} className="mt-8 max-w-3xl">
-              <p className="text-lg leading-relaxed text-brand-gray-dark">
-                {description}
-              </p>
-            </motion.div>
-
-            {/* Highlights */}
-            {highlights.length > 0 && (
-              <motion.div variants={fadeUp} className="mt-12">
-                <h2 className="font-heading text-xl font-semibold text-brand-dark">
-                  {locale === 'ar' ? 'أبرز الإنجازات' : 'Key Highlights'}
+          {features.length > 0 && (
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="mt-10 lg:mt-14"
+            >
+              <div className="overflow-hidden rounded-2xl border border-stone-200/95 bg-white px-8 py-9 shadow-[0_10px_44px_-22px_rgba(13,12,10,0.16)] ring-1 ring-black/[0.035] lg:px-11 lg:py-11">
+                <h2 className="font-display text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">
+                  {featuresTitle}
                 </h2>
-                <ul className="mt-4 space-y-3">
-                  {highlights.map((highlight, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <span className="mt-2 block h-2 w-2 shrink-0 bg-brand-gold" />
-                      <span className="text-base text-brand-gray-dark">{highlight}</span>
+                <div
+                  className="mt-[0.875rem] h-[2px] w-12 rounded-[1px] bg-[#C09040]"
+                  aria-hidden
+                />
+                <ul className="mt-[1.5rem] space-y-[0.8rem] text-start lg:columns-2 lg:gap-x-12">
+                  {features.map((item, idx) => (
+                    <li
+                      key={idx}
+                      className="mb-[0.8rem] inline-block w-full break-inside-avoid text-[0.93rem] leading-relaxed text-brand-gray-dark lg:leading-[1.8]"
+                    >
+                      <span className="ms-0 inline-flex gap-3">
+                        <span
+                          className="mt-[0.58em] h-1 w-6 shrink-0 rounded-full bg-[#C09040]/85"
+                          aria-hidden
+                        />
+                        <span>{item}</span>
+                      </span>
                     </li>
                   ))}
                 </ul>
-              </motion.div>
-            )}
+              </div>
+            </motion.div>
+          )}
 
-            {/* Website link */}
-            {subsidiary.website && (
-              <motion.div variants={fadeUp} className="mt-8">
-                <a
-                  href={subsidiary.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-brand-gold hover:text-brand-gold-light transition-colors"
-                >
-                  <ExternalLink size={16} />
-                  {locale === 'ar' ? 'زيارة الموقع' : 'Visit Website'}
-                </a>
-              </motion.div>
-            )}
-          </motion.div>
+          {subsidiary.website && (
+            <motion.div variants={fadeUp} initial="hidden" animate="visible" className="mt-10 text-start">
+              <a
+                href={subsidiary.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex rounded-full border border-[#C09040]/50 px-5 py-3 text-[0.9rem] font-medium text-[#8B6224] underline-offset-4 transition-colors hover:border-[#C09040] hover:bg-[#C09040]/08"
+              >
+                {locale === 'ar' ? 'زيارة الموقع' : 'Visit website'} ↗
+              </a>
+            </motion.div>
+          )}
         </div>
       </section>
 
-      {/* Related Companies */}
       {relatedCompanies.length > 0 && (
         <section className="bg-brand-offwhite py-20 lg:py-28">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-10">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="mb-10"
+            >
               <h2 className="font-heading text-2xl font-semibold text-brand-dark">
                 {locale === 'ar' ? 'شركات ذات صلة' : 'Related Companies'}
               </h2>
-              <div className="mt-3 flex items-center gap-2">
-                <span className="block h-0.5 w-8 bg-brand-gold" />
-                <span className="block h-0.5 w-2 bg-brand-gold" />
+              <div className="mt-3 flex justify-start gap-2">
+                <span className="block h-0.5 w-8 bg-[#C09040]" />
+                <span className="block h-0.5 w-2 bg-[#C09040]" />
               </div>
             </motion.div>
 
@@ -127,7 +187,7 @@ export default function SubsidiaryDetail({ subsidiary, relatedCompanies, locale 
               viewport={{ once: true }}
               className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
             >
-              {relatedCompanies.map((sub) => (
+              {relatedCompanies.slice(0, 3).map((sub) => (
                 <SubsidiaryCard key={sub.id} subsidiary={sub} locale={locale} />
               ))}
             </motion.div>

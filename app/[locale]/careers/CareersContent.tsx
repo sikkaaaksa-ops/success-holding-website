@@ -8,6 +8,7 @@ import { ChevronDown, Users, Rocket, Heart, MapPin, Briefcase } from 'lucide-rea
 import { fadeUp, staggerContainer } from '@/lib/motionVariants'
 import { careers } from '@/data/careers'
 import Button from '@/components/ui/Button'
+import PageBanner from '@/components/layout/PageBanner'
 
 const cultureValues = [
   { icon: Rocket, key: 'growth' },
@@ -28,8 +29,7 @@ export default function CareersContent() {
   return (
     <>
       {/* Page Hero */}
-      <section className="relative flex min-h-[50vh] items-center justify-center bg-brand-charcoal pt-16">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(184,151,58,0.06)_0%,transparent_70%)]" />
+      <PageBanner className="min-h-[50vh] items-center justify-center">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -38,13 +38,13 @@ export default function CareersContent() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-sm uppercase tracking-[0.3em] text-brand-gold"
+            className="font-heading text-sm uppercase tracking-[0.3em] text-brand-gold"
           >
             {t('hero.label')}
           </motion.p>
           <motion.h1
             variants={fadeUp}
-            className="mt-4 font-heading text-4xl font-semibold text-white md:text-6xl"
+            className="mt-4 font-display text-4xl font-semibold text-white md:text-6xl"
           >
             {t('hero.title')}
           </motion.h1>
@@ -55,13 +55,13 @@ export default function CareersContent() {
             {t('hero.subtitle')}
           </motion.p>
         </motion.div>
-      </section>
+      </PageBanner>
 
       {/* Culture Section */}
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-14 text-center">
-            <h2 className="font-heading text-3xl font-semibold text-brand-dark md:text-4xl">
+            <h2 className="font-display text-3xl font-semibold text-brand-dark md:text-4xl">
               {t('culture.title')}
             </h2>
             <div className="mt-4 flex items-center justify-center gap-2">
@@ -103,7 +103,7 @@ export default function CareersContent() {
       <section className="bg-brand-offwhite py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-14 text-center">
-            <h2 className="font-heading text-3xl font-semibold text-brand-dark md:text-4xl">
+            <h2 className="font-display text-3xl font-semibold text-brand-dark md:text-4xl">
               {t('positions.title')}
             </h2>
             <div className="mt-4 flex items-center justify-center gap-2">

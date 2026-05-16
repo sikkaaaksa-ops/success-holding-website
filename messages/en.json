@@ -19,14 +19,6 @@
       "title": "Our Companies | SUCCESS Group",
       "description": "Discover the portfolio of specialized companies within the SUCCESS Group."
     },
-    "structure": {
-      "title": "Group Structure | SUCCESS Group",
-      "description": "An integrated network of specialized companies under one vision."
-    },
-    "projects": {
-      "title": "Projects | SUCCESS Group",
-      "description": "Landmark projects delivered and underway across all our sectors."
-    },
     "partners": {
       "title": "Our Partners | SUCCESS Group",
       "description": "Trusted partnerships with leading organizations across the Kingdom."
@@ -50,8 +42,6 @@
     "sectors": "Sectors",
     "companies": "Companies",
     "subsidiaries": "Companies",
-    "structure": "Structure",
-    "projects": "Projects",
     "partners": "Partners",
     "news": "News",
     "careers": "Careers",
@@ -157,10 +147,6 @@
     "subtitle": "Stay informed on the latest developments from across the SUCCESS group.",
     "viewAll": "View All News"
   },
-  "groupStructure": {
-    "title": "Group Structure",
-    "subtitle": "An integrated network of specialized companies under one vision."
-  },
   "aboutSnippet": {
     "label": "Who We Are",
     "title": "A Legacy of Excellence Since 1999",
@@ -251,19 +237,20 @@
       "title": "Contact Information",
       "phone": {
         "label": "Phone",
-        "value": "+966 11 XXX XXXX"
+        "value": "+966555433164"
       },
       "email": {
         "label": "Email",
-        "value": "info@success-group.sa"
+        "value": "info@successes.info"
       },
       "address": {
-        "label": "Address",
-        "value": "King Fahd Road, Riyadh, Saudi Arabia"
+        "label": "Addresses",
+        "value1": "Saudi Arabia – Jeddah – Al-Naeem District – Prince Sultan Street",
+        "value2": "Saudi Arabia – Jeddah – Al-Rawda District – Saud Al-Faisal Street"
       },
       "hours": {
         "label": "Office Hours",
-        "value": "Sunday – Thursday, 8:00 AM – 5:00 PM"
+        "value": "Sunday – Thursday, 8:00 AM – 9:00 PM"
       }
     },
     "form": {

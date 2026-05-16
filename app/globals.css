@@ -1,22 +1,27 @@
 @font-face {
-  font-family: "Hacen Algeria HD";
-  src: url("/fonts/HacenAlgeriaHD.woff2") format("woff2"),
-       url("/fonts/HacenAlgeriaHD.woff") format("woff");
+  font-family: "Hacen Maghreb";
+  src: url("/fonts/HacenMaghreb.woff2") format("woff2"),
+       url("/fonts/HacenMaghreb.woff")  format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Hacen Algeria";
   src: url("/fonts/HacenAlgeria.woff2") format("woff2"),
-       url("/fonts/HacenAlgeria.woff") format("woff");
+       url("/fonts/HacenAlgeria.woff")  format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @import "tailwindcss";
+
+:root {
+  --font-display: "Hacen Maghreb", "Playfair Display", Georgia, serif;
+  --font-body:    "Hacen Algeria", "Outfit", system-ui, sans-serif;
+  --font-arabic:  "Hacen Algeria", "IBM Plex Sans Arabic", system-ui, sans-serif;
+}
 
 @theme inline {
   --color-brand-gold: #B8973A;
@@ -29,11 +34,11 @@
   --color-brand-gray-dark: #6B6560;
   --color-brand-beige: #EDE8DF;
 
-  --font-heading: "Hacen Algeria HD", 'Cormorant Garamond', serif;
-  --font-body: "Hacen Algeria", 'DM Sans', sans-serif;
-  --font-arabic: "Hacen Algeria", 'IBM Plex Sans Arabic', sans-serif;
+  --font-display: "Hacen Maghreb", "Playfair Display", Georgia, serif;
+  --font-body:    "Hacen Algeria", "Outfit", system-ui, sans-serif;
+  --font-arabic:  "Hacen Algeria", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-heading: var(--font-body);
 }
-
 html {
   scroll-behavior: smooth;
 }
@@ -41,6 +46,13 @@ html {
 body {
   background: var(--color-brand-offwhite);
   color: var(--color-brand-dark);
+  text-align: start;
+}
+
+[dir="rtl"] input:not([dir="ltr"]),
+[dir="rtl"] textarea:not([dir="ltr"]),
+[dir="rtl"] select:not([dir="ltr"]) {
+  text-align: start;
 }
 
 /* ── WhatsApp pulse ── */
@@ -115,4 +127,52 @@ body {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+/* ── Partners section marquee ── */
+@keyframes partnersMarqueeLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
+}
+@keyframes partnersMarqueeRight {
+  from { transform: translateX(-33.333%); }
+  to { transform: translateX(0); }
+}
+.partners-track-right,
+.partners-track-left {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  will-change: transform;
+}
+.partners-track-right {
+  animation: partnersMarqueeRight 40s linear infinite;
+}
+.partners-track-left {
+  animation: partnersMarqueeLeft 40s linear infinite;
+}
+.partners-row {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+.partners-row--spaced {
+  margin-bottom: 16px;
+}
+.partner-marquee-img {
+  height: 60px;
+}
+@media (min-width: 768px) {
+  .partner-marquee-img {
+    height: 75px;
+  }
+}
+@media (min-width: 1024px) {
+  .partner-marquee-img {
+    height: 90px;
+  }
+}
+.partners-row:hover .partners-track-right,
+.partners-row:hover .partners-track-left {
+  animation-play-state: paused;
 }

@@ -5,16 +5,19 @@ import { useTranslations, useLocale } from 'next-intl'
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react'
 import { fadeUp, staggerContainer, slideInLeft, slideInRight } from '@/lib/motionVariants'
 import ContactForm from '@/components/forms/ContactForm'
+import { siteConfig } from '@/data/siteContent'
+import PageBanner from '@/components/layout/PageBanner'
 
 export default function ContactContent() {
   const t = useTranslations('contact')
   const locale = useLocale()
+  const isRtl = locale === 'ar'
+  const pick = (en: string, ar: string) => (locale === 'ar' ? ar : en)
 
   return (
     <>
       {/* Page Hero */}
-      <section className="relative flex min-h-[40vh] items-center justify-center bg-brand-charcoal pt-16">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(184,151,58,0.06)_0%,transparent_70%)]" />
+      <PageBanner className="min-h-[40vh] items-center justify-center">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -23,7 +26,7 @@ export default function ContactContent() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-heading text-4xl font-semibold text-white md:text-5xl"
+            className="font-display text-4xl font-semibold text-white md:text-5xl"
           >
             {t('hero.title')}
           </motion.h1>
@@ -34,7 +37,7 @@ export default function ContactContent() {
             {t('hero.subtitle')}
           </motion.p>
         </motion.div>
-      </section>
+      </PageBanner>
 
       {/* Main Content: 2-column */}
       <section className="py-20 lg:py-28">
@@ -42,10 +45,11 @@ export default function ContactContent() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
             {/* Left: Contact Info + Map */}
             <motion.div
-              variants={slideInLeft}
+              variants={isRtl ? slideInRight : slideInLeft}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              className="text-start"
             >
               <h2 className="font-heading text-2xl font-semibold text-brand-dark">
                 {t('info.title')}
@@ -60,42 +64,131 @@ export default function ContactContent() {
                   <Phone size={20} className="mt-0.5 shrink-0 text-brand-gold" />
                   <div>
                     <p className="font-medium text-brand-dark">{t('info.phone.label')}</p>
-                    <p className="text-sm text-brand-gray-dark">{t('info.phone.value')}</p>
+                    <a
+                      href={`tel:${siteConfig.phone}`}
+                      dir="ltr"
+                      className="text-sm text-brand-gray-dark transition-colors hover:text-brand-gold"
+                    >
+                      {siteConfig.phone}
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Mail size={20} className="mt-0.5 shrink-0 text-brand-gold" />
                   <div>
                     <p className="font-medium text-brand-dark">{t('info.email.label')}</p>
-                    <p className="text-sm text-brand-gray-dark">{t('info.email.value')}</p>
+                    <a
+                      href={`mailto:${siteConfig.email}`}
+                      dir="ltr"
+                      className="text-sm text-brand-gray-dark transition-colors hover:text-brand-gold"
+                    >
+                      {siteConfig.email}
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <MapPin size={20} className="mt-0.5 shrink-0 text-brand-gold" />
                   <div>
                     <p className="font-medium text-brand-dark">{t('info.address.label')}</p>
-                    <p className="text-sm text-brand-gray-dark">{t('info.address.value')}</p>
+                    <ul className="mt-1 space-y-3">
+                      {siteConfig.addresses.map((addr, index) => (
+                        <li key={index}>
+                          <a
+                            href={addr.mapUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-brand-gray-dark transition-colors hover:text-brand-gold"
+                          >
+                            {pick(addr.addressEn, addr.addressAr)}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Clock size={20} className="mt-0.5 shrink-0 text-brand-gold" />
                   <div>
                     <p className="font-medium text-brand-dark">{t('info.hours.label')}</p>
-                    <p className="text-sm text-brand-gray-dark">{t('info.hours.value')}</p>
+                    <p className="text-sm text-brand-gray-dark">
+                      {pick(siteConfig.workingHoursEn, siteConfig.workingHoursAr)}
+                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* Map placeholder */}
-              <div className="mt-10 flex aspect-video w-full items-center justify-center bg-brand-beige">
-                <span className="text-sm uppercase tracking-widest text-brand-gray">
-                  {locale === 'ar' ? 'خريطة الموقع' : 'Map'}
-                </span>
+              <div className="mt-10 space-y-4">
+                <motion.div
+                  style={{ position: 'relative', width: '100%', height: '300px', overflow: 'hidden' }}
+                >
+                  <iframe
+                    src="https://maps.google.com/maps?q=21.5433,39.1728&z=15&output=embed"
+                    width="100%"
+                    height="300"
+                    style={{ border: 0, display: 'block' }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                  <a
+                    href="https://maps.app.goo.gl/mJMpxXJ2vZqxTfvy5"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      position: 'absolute',
+                      bottom: '16px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      background: '#C09040',
+                      color: 'white',
+                      padding: '10px 24px',
+                      fontSize: '14px',
+                      textDecoration: 'none',
+                      zIndex: 10,
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    📍 افتح الخريطة
+                  </a>
+                </motion.div>
+                <motion.div
+                  style={{ position: 'relative', width: '100%', height: '300px', overflow: 'hidden' }}
+                >
+                  <iframe
+                    src="https://maps.google.com/maps?q=21.5380,39.1920&z=15&output=embed"
+                    width="100%"
+                    height="300"
+                    style={{ border: 0, display: 'block' }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                  <a
+                    href="https://maps.app.goo.gl/baMud45wsjooFFGq5"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      position: 'absolute',
+                      bottom: '16px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      background: '#C09040',
+                      color: 'white',
+                      padding: '10px 24px',
+                      fontSize: '14px',
+                      textDecoration: 'none',
+                      zIndex: 10,
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    📍 افتح الخريطة
+                  </a>
+                </motion.div>
               </div>
 
               {/* WhatsApp CTA */}
               <a
-                href="https://wa.me/966500000000"
+                href={`https://wa.me/${siteConfig.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center gap-2 bg-[#25D366] px-6 py-3 text-sm font-medium text-white transition-transform hover:scale-105"
@@ -107,7 +200,7 @@ export default function ContactContent() {
 
             {/* Right: Contact Form */}
             <motion.div
-              variants={slideInRight}
+              variants={isRtl ? slideInLeft : slideInRight}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}

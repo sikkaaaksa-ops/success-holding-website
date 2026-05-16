@@ -79,7 +79,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-white p-8 shadow-[0_2px_20px_rgba(0,0,0,0.06)] lg:p-10"
+      className="bg-white p-8 text-start shadow-[0_2px_20px_rgba(0,0,0,0.06)] lg:p-10"
     >
       <h2 className="font-heading text-2xl font-semibold text-brand-dark">
         {t('title')}

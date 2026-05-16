@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
-import { siteConfig, navContent } from '@/data/siteContent';
+import { navContent } from '@/data/siteContent';
 
 const NAV_ITEMS = navContent.items;
 
@@ -17,6 +18,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const t = useTranslations('nav');
   const locale = useLocale();
+  const isRTL = locale === 'ar';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -44,18 +46,26 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 inset-x-0 z-50 transition-colors duration-500 ${
-          scrolled ? 'bg-brand-charcoal shadow-lg' : 'bg-transparent'
+        className={`fixed top-0 inset-x-0 z-50 border-b border-white/5 backdrop-blur-md transition-colors duration-500 ${
+          scrolled
+            ? 'bg-brand-charcoal shadow-lg'
+            : 'bg-black/40'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link
-              href={`/${locale}`}
-              className="font-heading text-2xl tracking-[0.25em] text-brand-gold uppercase"
-            >
-              {siteConfig.brandName}
+            <Link href={`/${locale}`} className="inline-flex shrink-0 items-center">
+              <Image
+                src="/images/logo/success-logo-navbar.png"
+                alt="SUCCESS"
+                width={1024}
+                height={1024}
+                className="h-14 w-auto max-w-[180px] object-contain"
+                placeholder="empty"
+                style={{ background: 'transparent', mixBlendMode: 'screen' }}
+                priority
+              />
             </Link>
 
             {/* Desktop nav */}
@@ -107,19 +117,24 @@ export default function Navbar() {
       {/* Mobile overlay */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ x: '100%' }}
+            <motion.div
+            initial={{ x: isRTL ? '-100%' : '100%' }}
             animate={{ x: 0 }}
-            exit={{ x: '100%' }}
+            exit={{ x: isRTL ? '-100%' : '100%' }}
             transition={{ type: 'tween', duration: 0.35, ease: 'easeInOut' }}
-            className="fixed inset-0 z-50 bg-brand-charcoal flex flex-col"
+            className="fixed inset-0 z-50 flex flex-col bg-brand-charcoal"
           >
             <div className="flex items-center justify-between h-20 px-4 sm:px-6">
-              <Link
-                href={`/${locale}`}
-                className="font-heading text-2xl tracking-[0.25em] text-brand-gold uppercase"
-              >
-                {siteConfig.brandName}
+              <Link href={`/${locale}`} className="inline-flex shrink-0 items-center">
+                <Image
+                  src="/images/logo/success-logo-navbar.png"
+                  alt="SUCCESS"
+                  width={1024}
+                  height={1024}
+                  className="h-14 w-auto max-w-[180px] object-contain"
+                  placeholder="empty"
+                  style={{ background: 'transparent', mixBlendMode: 'screen' }}
+                />
               </Link>
               <button
                 onClick={() => setMobileOpen(false)}

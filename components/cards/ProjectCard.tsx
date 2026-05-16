@@ -39,7 +39,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
           </span>
         </div>
 
-        <div className="p-6">
+        <div className="p-6 text-start">
           <div className="mb-3 flex flex-wrap items-center gap-2">
             <span className="inline-block rounded-none bg-brand-offwhite px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-brand-gold">
               {project.sector}

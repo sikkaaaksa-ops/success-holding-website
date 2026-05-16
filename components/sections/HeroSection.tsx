@@ -1,80 +1,145 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, ChevronRight } from 'lucide-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { fadeUp, staggerContainer } from '@/lib/motionVariants'
 import Button from '@/components/ui/Button'
-import { heroContent } from '@/data/siteContent'
+import { heroContent, siteConfig } from '@/data/siteContent'
 
-const HERO_IMAGE = "" // Set to "/images/hero/hero.jpg" after uploading image
+const DEFAULT_HERO_IMAGE = '/images/hero/success-hero.png'
+
+/** Optional CMS fields (imagePath, cta hrefs) — read safely until added to siteContent types */
+type HeroContentFields = typeof heroContent & {
+  imagePath?: string
+  cta1Href?: string
+  cta2Href?: string
+}
+
+/**
+ * Split headline (reference layout). Message keys `hero.tagline` / `hero.subtext` stay the source
+ * for supporting copy; these lines match the reference emphasis pattern until CMS provides fields.
+ */
+const HEADLINE_BY_LOCALE = {
+  en: { line1: 'We invest in opportunities', line2: 'to create lasting impact' },
+  ar: { line1: 'نستثمر في الفرص', line2: 'لنصنع أثراً مستداماً' },
+} as const
 
 export default function HeroSection() {
   const t = useTranslations('hero')
   const locale = useLocale()
+  const hero = heroContent as HeroContentFields
+  const HERO_IMAGE = hero.imagePath?.trim()
+  const heroUrl = (HERO_IMAGE || DEFAULT_HERO_IMAGE).replace(/'/g, "\\'")
+  const cta1Href = hero.cta1Href?.trim() || `/${locale}/sectors`
+  const cta2Href = hero.cta2Href?.trim() || `/${locale}/about`
+  const headline = locale === 'ar' ? HEADLINE_BY_LOCALE.ar : HEADLINE_BY_LOCALE.en
+  const eyebrow =
+    locale === 'ar' ? heroContent.labelAr : heroContent.labelEn
+  const gradientDir = locale === 'ar' ? 'to right' : 'to left'
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden">
       <div
-        className="hero-bg absolute inset-0 z-0"
-        style={HERO_IMAGE ? { ["--hero-image" as string]: `url("${HERO_IMAGE}")` } : undefined}
-        aria-hidden="true"
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `linear-gradient(${gradientDir}, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.65) 100%), url("${heroUrl}")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+        aria-hidden
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(184,151,58,0.08)_0%,transparent_70%)]" aria-hidden="true" />
 
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 mx-auto max-w-7xl px-6 py-32 text-center lg:px-12"
-      >
-        <motion.p
-          variants={fadeUp}
-          className="text-sm uppercase tracking-[0.3em] text-brand-gold"
+      {/* dir="ltr" keeps image visually left and content right regardless of document direction */}
+      <div className="relative z-[10] min-h-screen">
+        <div
+          className="grid min-h-screen grid-cols-1 lg:grid-cols-[minmax(0,47fr)_minmax(0,53fr)]"
+          dir="ltr"
         >
-          {heroContent.labelEn}
-        </motion.p>
+          <div
+            className="relative min-h-[50vh] w-full lg:min-h-screen"
+            aria-hidden
+          />
 
-        <motion.h1
-          variants={fadeUp}
-          className="mt-6 font-heading text-5xl font-semibold leading-tight text-white md:text-7xl"
-        >
-          {t('tagline')}
-        </motion.h1>
+          <div
+            className="relative flex flex-col justify-center bg-transparent px-[clamp(1.25rem,4vw,3.5rem)] py-16 lg:py-24"
+            dir={locale === 'ar' ? 'rtl' : 'ltr'}
+          >
+            <div className="relative w-fit min-w-0 max-w-[min(100%,540px)]">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+              className="relative z-10 flex max-w-xl flex-col text-start"
+            >
+            <motion.div variants={fadeUp}>
+              <p className="font-heading text-xs uppercase tracking-[0.28em] text-brand-gold text-shadow-[0_1px_2px_rgba(0,0,0,0.85),0_2px_8px_rgba(0,0,0,0.55),0_0_20px_rgba(0,0,0,0.35)]">
+                {eyebrow}
+              </p>
+              <p className="mt-2 font-heading text-[11px] uppercase tracking-[0.22em] text-brand-gold/65 text-shadow-[0_1px_2px_rgba(0,0,0,0.8),0_2px_8px_rgba(0,0,0,0.5),0_0_16px_rgba(0,0,0,0.3)]">
+                {locale === 'ar' ? siteConfig.taglineAr : siteConfig.taglineEn}
+              </p>
+              <div
+                className="mt-4 h-px w-14 bg-brand-gold"
+                aria-hidden
+              />
+            </motion.div>
 
-        <motion.p
-          variants={fadeUp}
-          className="mx-auto mt-6 max-w-xl text-lg text-gray-300"
-        >
-          {t('subtext')}
-        </motion.p>
+            <motion.h1
+              variants={fadeUp}
+              className={`mt-8 font-display text-4xl font-semibold text-white text-shadow-[0_1px_2px_rgba(0,0,0,0.9),0_2px_12px_rgba(0,0,0,0.65),0_6px_28px_rgba(0,0,0,0.45),0_12px_48px_rgba(0,0,0,0.28)] sm:text-5xl lg:text-6xl ${
+                locale === 'ar' ? 'leading-[1.22]' : 'leading-tight'
+              }`}
+            >
+              <span className="block text-white">{headline.line1}</span>
+              <span className="mt-1 block text-brand-gold">{headline.line2}</span>
+            </motion.h1>
+
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 font-body text-base leading-relaxed text-white/85 text-shadow-[0_1px_2px_rgba(0,0,0,0.75),0_2px_10px_rgba(0,0,0,0.55),0_5px_24px_rgba(0,0,0,0.38)] sm:text-lg"
+            >
+              {t('subtext')}
+            </motion.p>
+
+            <motion.div
+              variants={fadeUp}
+              className="mt-10 flex flex-wrap items-center gap-4 drop-shadow-[0_4px_14px_rgba(0,0,0,0.35)]"
+            >
+              <Button
+                href={cta1Href}
+                variant="primary"
+                size="lg"
+                className="!bg-gradient-to-b !from-brand-gold-light !to-brand-gold !text-white shadow-sm hover:!from-brand-gold-light/92 hover:!to-brand-gold/95"
+              >
+                {t('ctaExplore')}
+              </Button>
+              <Button
+                href={cta2Href}
+                variant="outline"
+                size="lg"
+                className="gap-2 !border-2 !border-white/35 !text-white hover:!border-brand-gold hover:!bg-white/5 hover:!text-brand-gold"
+              >
+                {t('ctaAbout')}
+                <ChevronRight className="h-4 w-4 rtl:rotate-180" aria-hidden />
+              </Button>
+            </motion.div>
+          </motion.div>
+            </div>
+          </div>
+        </div>
 
         <motion.div
-          variants={fadeUp}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.55, ease: 'easeOut' }}
+          className="pointer-events-none absolute bottom-8 left-1/2 z-20 -translate-x-1/2"
+          aria-hidden
         >
-          <Button href={`/${locale}/sectors`} variant="primary" size="lg">
-            {t('ctaExplore')}
-          </Button>
-          <Button href={`/${locale}/about`} variant="outline" size="lg">
-            {t('ctaAbout')}
-          </Button>
+          <ChevronDown className="h-6 w-6 text-brand-gold/75" />
         </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-        className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-        >
-          <ChevronDown className="h-6 w-6 text-brand-gold" />
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   )
 }

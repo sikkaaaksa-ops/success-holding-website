@@ -7,6 +7,7 @@ import { fadeUp, staggerContainer } from '@/lib/motionVariants'
 import { newsArticles } from '@/data/news'
 import { formatDate } from '@/lib/utils'
 import NewsCard from '@/components/cards/NewsCard'
+import PageBanner from '@/components/layout/PageBanner'
 
 export default function NewsContent() {
   const t = useTranslations('newsSection')
@@ -18,8 +19,7 @@ export default function NewsContent() {
   return (
     <>
       {/* Page Hero */}
-      <section className="relative flex min-h-[40vh] items-center justify-center bg-brand-charcoal pt-16">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(184,151,58,0.06)_0%,transparent_70%)]" />
+      <PageBanner className="min-h-[40vh] items-center justify-center">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -28,7 +28,7 @@ export default function NewsContent() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-heading text-4xl font-semibold text-white md:text-5xl"
+            className="font-display text-4xl font-semibold text-white md:text-5xl"
           >
             {t('title')}
           </motion.h1>
@@ -39,7 +39,7 @@ export default function NewsContent() {
             {t('subtitle')}
           </motion.p>
         </motion.div>
-      </section>
+      </PageBanner>
 
       {/* Featured Article */}
       {featured && (

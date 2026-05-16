@@ -7,6 +7,7 @@ import { useLocale } from 'next-intl'
 import { fadeUp, staggerContainer } from '@/lib/motionVariants'
 import { formatDate } from '@/lib/utils'
 import type { NewsArticle } from '@/types'
+import PageBanner from '@/components/layout/PageBanner'
 
 interface NewsDetailProps {
   article: NewsArticle
@@ -22,7 +23,7 @@ export default function NewsDetail({ article, locale }: NewsDetailProps) {
   return (
     <>
       {/* Hero image area */}
-      <section className="relative flex min-h-[40vh] items-end bg-brand-charcoal pt-16">
+      <PageBanner className="min-h-[40vh] items-end" showGoldRadial={false}>
         <div className="absolute inset-0 flex items-center justify-center bg-brand-beige/5">
           <span className="text-sm uppercase tracking-widest text-brand-gray/40">
             {locale === 'ar' ? 'صورة المقال' : 'Article Image'}
@@ -37,11 +38,11 @@ export default function NewsDetail({ article, locale }: NewsDetailProps) {
             {locale === 'ar' ? 'العودة إلى الأخبار' : 'Back to News'}
           </Link>
         </div>
-      </section>
+      </PageBanner>
 
       {/* Article Content */}
       <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-3xl px-6 lg:px-12">
+        <div className="mx-auto max-w-3xl px-6 text-start lg:px-12">
           <motion.article
             variants={staggerContainer}
             initial="hidden"
@@ -62,7 +63,7 @@ export default function NewsDetail({ article, locale }: NewsDetailProps) {
 
             <motion.h1
               variants={fadeUp}
-              className="mt-6 font-heading text-3xl font-semibold text-brand-dark md:text-4xl lg:text-5xl"
+              className="mt-6 font-display text-3xl font-semibold text-brand-dark md:text-4xl lg:text-5xl"
             >
               {title}
             </motion.h1>

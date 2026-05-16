@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from 'next-intl'
 import { fadeUp, staggerContainer } from '@/lib/motionVariants'
 import { partners } from '@/data/partners'
 import PartnerLogoGrid from '@/components/ui/PartnerLogoGrid'
+import PageBanner from '@/components/layout/PageBanner'
 
 export default function PartnersContent() {
   const t = useTranslations('partnersSection')
@@ -22,8 +23,7 @@ export default function PartnersContent() {
   return (
     <>
       {/* Page Hero */}
-      <section className="relative flex min-h-[40vh] items-center justify-center bg-brand-charcoal pt-16">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(184,151,58,0.06)_0%,transparent_70%)]" />
+      <PageBanner className="min-h-[40vh] items-center justify-center">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -32,7 +32,7 @@ export default function PartnersContent() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-heading text-4xl font-semibold text-white md:text-5xl"
+            className="font-display text-4xl font-semibold text-white md:text-5xl"
           >
             {t('title')}
           </motion.h1>
@@ -43,7 +43,7 @@ export default function PartnersContent() {
             {t('subtitle')}
           </motion.p>
         </motion.div>
-      </section>
+      </PageBanner>
 
       {/* Category filter */}
       <div className="bg-brand-offwhite border-b border-brand-gray/10">

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { fadeUp } from '@/lib/motionVariants'
@@ -21,13 +22,25 @@ export default function NewsCard({ article, locale }: NewsCardProps) {
         href={`/${locale}/news/${article.slug}`}
         className="group block bg-white shadow-[0_2px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.10)]"
       >
-        <div className="flex aspect-video items-center justify-center bg-brand-beige">
-          <span className="text-xs uppercase tracking-widest text-brand-gray">
-            {locale === 'ar' ? 'صورة' : 'Image'}
-          </span>
+        <div className="relative aspect-video overflow-hidden bg-brand-beige">
+          {article.imageUrl ? (
+            <Image
+              src={article.imageUrl}
+              alt=""
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center">
+              <span className="text-xs uppercase tracking-widest text-brand-gray">
+                {locale === 'ar' ? 'صورة' : 'Image'}
+              </span>
+            </div>
+          )}
         </div>
 
-        <div className="p-6">
+        <div className="p-6 text-start">
           {article.category && (
             <span className="mb-2 inline-block rounded-none bg-brand-offwhite px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-brand-gold">
               {article.category}

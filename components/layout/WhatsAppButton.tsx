@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { siteConfig } from '@/data/siteContent';
 
@@ -24,8 +24,6 @@ function WhatsAppIcon() {
 export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
   const t = useTranslations('common');
-  const locale = useLocale();
-  const isRTL = locale === 'ar';
 
   return (
     <a
@@ -35,7 +33,7 @@ export default function WhatsAppButton() {
       aria-label="WhatsApp"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`fixed bottom-6 z-50 ${isRTL ? 'left-6' : 'right-6'}`}
+      className="fixed bottom-6 end-6 z-50"
     >
       {/* Pulse ring */}
       <span
