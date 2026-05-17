@@ -39,14 +39,11 @@ export default function HeroSection() {
   const gradientDir = locale === 'ar' ? 'to right' : 'to left'
 
   return (
-    <section className="relative min-h-[100svh] md:min-h-screen overflow-hidden flex flex-col justify-end md:block">
+    <section className="relative min-h-[85svh] md:min-h-screen overflow-hidden flex flex-col justify-end md:block">
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat bg-[center_30%] md:bg-center"
         style={{
           backgroundImage: `url("${heroUrl}")`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
         }}
         aria-hidden
       />
@@ -67,18 +64,18 @@ export default function HeroSection() {
       />
 
       {/* dir="ltr" keeps image visually left and content right regardless of document direction */}
-      <div className="relative z-[10] min-h-screen">
+      <div className="relative z-[10] min-h-[85svh] md:min-h-screen">
         <div
-          className="grid min-h-screen grid-cols-1 lg:grid-cols-[minmax(0,47fr)_minmax(0,53fr)]"
+          className="grid min-h-[85svh] md:min-h-screen grid-cols-1 lg:grid-cols-[minmax(0,47fr)_minmax(0,53fr)]"
           dir="ltr"
         >
           <div
-            className="relative min-h-[50vh] w-full lg:min-h-screen"
+            className="relative min-h-[38vh] md:min-h-[50vh] w-full lg:min-h-screen"
             aria-hidden
           />
 
           <div
-            className="relative flex flex-col justify-end md:justify-center bg-transparent px-[clamp(1.25rem,4vw,3.5rem)] pt-0 pb-8 md:pb-52 md:py-16 lg:py-24 md:pt-0"
+            className="relative flex flex-col justify-end md:justify-center bg-transparent px-[clamp(1.25rem,4vw,3.5rem)] pt-4 pb-4 md:pb-52 md:py-16 lg:py-24 md:pt-0"
             dir={locale === 'ar' ? 'rtl' : 'ltr'}
           >
             <div className="relative w-fit min-w-0 max-w-[min(100%,540px)]">
@@ -86,7 +83,7 @@ export default function HeroSection() {
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
-              className="relative z-10 flex max-w-xl flex-col text-start mb-8 md:mb-0"
+              className="relative z-10 flex max-w-xl flex-col text-start mb-4 md:mb-0"
             >
             <motion.div variants={fadeUp}>
               <p className="font-heading text-[10px] md:text-[10.5px] uppercase tracking-[0.28em] text-brand-gold text-shadow-[0_1px_2px_rgba(0,0,0,0.85),0_2px_8px_rgba(0,0,0,0.55),0_0_20px_rgba(0,0,0,0.35)]">
@@ -103,7 +100,7 @@ export default function HeroSection() {
 
             <motion.h1
               variants={fadeUp}
-              className={`mt-8 font-display text-[clamp(38px,4.5vw,64px)] md:text-[clamp(38px,4.5vw,64px)] font-semibold text-white text-shadow-[0_1px_2px_rgba(0,0,0,0.9),0_2px_12px_rgba(0,0,0,0.65),0_6px_28px_rgba(0,0,0,0.45),0_12px_48px_rgba(0,0,0,0.28)] ${
+              className={`mt-8 font-display text-[26px] md:text-[clamp(38px,4.5vw,64px)] font-semibold text-white text-shadow-[0_1px_2px_rgba(0,0,0,0.9),0_2px_12px_rgba(0,0,0,0.65),0_6px_28px_rgba(0,0,0,0.45),0_12px_48px_rgba(0,0,0,0.28)] ${
                 locale === 'ar' ? 'leading-[1.22]' : 'leading-tight'
               }`}
             >
@@ -115,7 +112,7 @@ export default function HeroSection() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-6 font-body text-[12px] md:text-[clamp(14px,1.35vw,17px)] line-clamp-3 md:line-clamp-none max-w-full md:max-w-[480px] pb-4 md:pb-0 leading-relaxed text-white/85 text-shadow-[0_1px_2px_rgba(0,0,0,0.75),0_2px_10px_rgba(0,0,0,0.55),0_5px_24px_rgba(0,0,0,0.38)]"
+              className="mt-6 font-body text-[11px] md:text-[clamp(14px,1.35vw,17px)] line-clamp-3 md:line-clamp-none max-w-full md:max-w-[480px] pb-4 md:pb-0 leading-relaxed text-white/85 text-shadow-[0_1px_2px_rgba(0,0,0,0.75),0_2px_10px_rgba(0,0,0,0.55),0_5px_24px_rgba(0,0,0,0.38)]"
             >
               {t('subtext')}
             </motion.p>
