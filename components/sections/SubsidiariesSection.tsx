@@ -110,10 +110,18 @@ export default function SubsidiariesSection() {
           viewport={{ once: true }}
           className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3"
         >
-          {subsidiaries.map((sub) => (
+          {subsidiaries.slice(0, 4).map((sub) => (
             <CompanyCard key={sub.id} subsidiary={sub} locale={locale} />
           ))}
         </motion.div>
+
+        <div
+          className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5"
+        >
+          {subsidiaries.slice(4).map((sub) => (
+            <CompanyCard key={sub.id} subsidiary={sub} locale={locale} />
+          ))}
+        </div>
 
         <div className="mt-12 text-center">
           <Link

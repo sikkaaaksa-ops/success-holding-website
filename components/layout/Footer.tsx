@@ -180,7 +180,7 @@ export default function Footer() {
         <div className="footer-grid grid gap-12">
           {/* Logo column — first in DOM → rightmost in RTL */}
           <div
-            className="footer-logo-col flex flex-col items-center gap-0 text-center md:items-end md:text-end"
+            className="footer-logo-col flex flex-col items-center gap-0 text-center md:items-end md:text-start"
             style={logoParentWrap}
           >
             <Link
@@ -327,7 +327,7 @@ export default function Footer() {
         style={{ borderTop: `1px solid ${GOLD_BORDER}` }}
       >
         <div
-          className="mx-auto flex flex-col items-center justify-between gap-3 px-[clamp(20px,5.5vw,80px)] py-5 text-center sm:flex-row md:text-end"
+          className="mx-auto flex flex-col items-center justify-center gap-3 px-[clamp(20px,5.5vw,80px)] py-5 text-center sm:flex-row sm:justify-between md:items-end md:justify-end md:text-start"
           style={{ maxWidth: 1360 }}
         >
           <span

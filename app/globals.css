@@ -1,19 +1,43 @@
 @font-face {
   font-family: "Thmanyah Sans";
-  src: url("/fonts/ThmanyahSans-Regular.woff2") format("woff2"),
-       url("/fonts/ThmanyahSans-Regular.woff")  format("woff");
+  src: url("/fonts/thmanyahsans-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Thmanyah Sans";
+  src: url("/fonts/thmanyahsans-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Thmanyah Sans";
-  src: url("/fonts/ThmanyahSans-Bold.woff2") format("woff2"),
-       url("/fonts/ThmanyahSans-Bold.woff")  format("woff");
+  src: url("/fonts/thmanyahsans-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Thmanyah Sans";
+  src: url("/fonts/thmanyahsans-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Thmanyah Sans";
+  src: url("/fonts/thmanyahsans-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: "Hacen Maghreb";
   src: url("/fonts/HacenMaghreb.woff2") format("woff2"),
@@ -34,8 +58,8 @@
 @import "tailwindcss";
 
 :root {
-  --font-display: "Thmanyah Sans", "Hacen Maghreb", Georgia, serif;
-  --font-body:    "Thmanyah Sans", "Hacen Algeria", system-ui, sans-serif;
+  --font-display: "Thmanyah Sans", "Cormorant Garamond", Georgia, serif;
+  --font-body:    "Thmanyah Sans", "DM Sans", system-ui, sans-serif;
   --font-arabic:  "Thmanyah Sans", "IBM Plex Sans Arabic", system-ui, sans-serif;
 }
 
@@ -50,8 +74,8 @@
   --color-brand-gray-dark: #6B6560;
   --color-brand-beige: #EDE8DF;
 
-  --font-display: "Thmanyah Sans", "Hacen Maghreb", Georgia, serif;
-  --font-body:    "Thmanyah Sans", "Hacen Algeria", system-ui, sans-serif;
+  --font-display: "Thmanyah Sans", "Cormorant Garamond", Georgia, serif;
+  --font-body:    "Thmanyah Sans", "DM Sans", system-ui, sans-serif;
   --font-arabic:  "Thmanyah Sans", "IBM Plex Sans Arabic", system-ui, sans-serif;
   --font-heading: var(--font-body);
 }
@@ -191,4 +215,12 @@ body {
 .partners-row:hover .partners-track-right,
 .partners-row:hover .partners-track-left {
   animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .sectors-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
 }

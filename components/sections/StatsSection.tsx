@@ -71,21 +71,21 @@ const STAT_ICONS = [
     <rect x="19" y="16" width="5" height="16" stroke="#B8902A" strokeWidth={1.5} />
     <rect x="26" y="12" width="5" height="20" stroke="#B8902A" strokeWidth={1.5} />
   </svg>,
-  // 3 — years (medal)
+  // 3 — years (clock)
   <svg
-    key="medal"
-    width={40}
-    height={40}
-    viewBox="0 0 40 40"
+    key="clock"
+    width="28"
+    height="28"
+    viewBox="0 0 24 24"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+    stroke="#C09040"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     aria-hidden
   >
-    <path d="M12 8L14 14H10L12 8Z" stroke="#B8902A" strokeWidth={1.5} strokeLinejoin="round" />
-    <path d="M28 8L26 14H30L28 8Z" stroke="#B8902A" strokeWidth={1.5} strokeLinejoin="round" />
-    <circle cx="20" cy="22" r="8" stroke="#B8902A" strokeWidth={1.5} />
-    <path d="M16 28L14 34" stroke="#B8902A" strokeWidth={1.5} strokeLinecap="round" />
-    <path d="M24 28L26 34" stroke="#B8902A" strokeWidth={1.5} strokeLinecap="round" />
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 16 14" />
   </svg>,
 ]
 
@@ -95,9 +95,9 @@ export default function StatsSection() {
     locale === 'ar' ? [...statsContent].reverse() : [...statsContent]
 
   return (
-    <section className="bg-[#F2EDE4] py-10 px-[clamp(20px,5.5vw,80px)]">
+    <section className="bg-[#F2EDE4] py-8 md:py-10 px-[clamp(20px,5.5vw,80px)]">
       <div
-        className="mx-auto grid max-w-[1360px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+        className="mx-auto grid max-w-[1360px] grid-cols-2 md:grid-cols-4"
         dir={locale === 'ar' ? 'rtl' : 'ltr'}
       >
         {orderedStats.map((stat) => {
@@ -112,12 +112,12 @@ export default function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="flex flex-col items-center border-e-0 px-4 py-8 text-center sm:[&:nth-child(odd)]:border-e sm:[&:nth-child(odd)]:border-e-[rgba(184,144,42,0.30)] lg:border-e-0 lg:[&:not(:last-child)]:border-e lg:[&:not(:last-child)]:border-e-[rgba(184,144,42,0.30)]"
+              className="flex flex-col items-center border-e-0 py-6 px-3 md:py-8 md:px-4 text-center [&:nth-child(odd)]:border-e [&:nth-child(odd)]:border-e-[rgba(184,144,42,0.30)] md:border-e-0 md:[&:not(:last-child)]:border-e md:[&:not(:last-child)]:border-e-[rgba(184,144,42,0.30)]"
             >
-              <div className="mb-4 flex justify-center">{icon}</div>
+              <div className="mb-4 hidden md:flex justify-center">{icon}</div>
               <div
                 dir="ltr"
-                className="font-display mb-2 text-[clamp(52px,5.5vw,80px)] font-bold leading-none text-[#B8902A] tabular-nums"
+                className="font-display text-[32px] md:mb-2 md:text-[clamp(52px,5.5vw,80px)] font-bold leading-none text-[#B8902A] tabular-nums"
               >
                 <AnimatedCounter
                   value={stat.value}
@@ -126,7 +126,11 @@ export default function StatsSection() {
                   duration={1.8}
                 />
               </div>
-              <p className="font-body text-center text-[17px] font-normal leading-snug text-[#5C5650]">
+              <div
+                className="my-2 h-[2px] w-6 bg-[#B8902A] md:hidden"
+                aria-hidden
+              />
+              <p className="font-body text-center text-[10px] md:text-[17px] font-normal leading-snug text-[#5C5650]">
                 {label}
               </p>
             </motion.div>
