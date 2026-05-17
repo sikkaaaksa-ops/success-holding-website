@@ -286,7 +286,7 @@ export default function Footer() {
 
           <div className="flex flex-col items-center md:items-end">
             <SectionTitle>{pick('Follow Us', 'تابعنا')}</SectionTitle>
-            <div dir="ltr" className="flex items-center justify-center gap-3 md:justify-end">
+            <div dir="ltr" className="mb-6 flex items-center justify-center gap-3 md:mb-0 md:justify-end">
               <a
                 href={siteConfig.social.linkedin}
                 target="_blank"

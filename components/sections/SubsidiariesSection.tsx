@@ -30,7 +30,7 @@ function CompanyCard({ subsidiary, locale }: CompanyCardProps) {
   const detailsLabel = locale === 'ar' ? 'التفاصيل' : 'Details'
 
   return (
-    <motion.div variants={fadeUp} className="overflow-visible">
+    <div className="overflow-visible">
       <Link
         href={`/${locale}/subsidiaries/${subsidiary.slug}`}
         className="group flex flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-white shadow-[0_8px_40px_-18px_rgba(13,12,10,0.14)] ring-1 ring-black/[0.035] transition-shadow duration-300 hover:shadow-[0_14px_48px_-16px_rgba(13,12,10,0.2)]"
@@ -55,7 +55,10 @@ function CompanyCard({ subsidiary, locale }: CompanyCardProps) {
               </span>
             </div>
           )}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent"
+            aria-hidden
+          />
         </div>
 
         <div className="flex flex-1 flex-col px-6 pb-6 pt-6 text-start">
@@ -73,7 +76,7 @@ function CompanyCard({ subsidiary, locale }: CompanyCardProps) {
           </span>
         </div>
       </Link>
-    </motion.div>
+    </div>
   )
 }
 
@@ -108,20 +111,18 @@ export default function SubsidiariesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {subsidiaries.slice(0, 4).map((sub) => (
-            <CompanyCard key={sub.id} subsidiary={sub} locale={locale} />
+          {subsidiaries.map((sub, index) => (
+            <motion.div
+              key={sub.id}
+              variants={fadeUp}
+              className={index >= 4 ? 'hidden md:block' : undefined}
+            >
+              <CompanyCard subsidiary={sub} locale={locale} />
+            </motion.div>
           ))}
         </motion.div>
-
-        <div
-          className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5"
-        >
-          {subsidiaries.slice(4).map((sub) => (
-            <CompanyCard key={sub.id} subsidiary={sub} locale={locale} />
-          ))}
-        </div>
 
         <div className="mt-12 text-center">
           <Link

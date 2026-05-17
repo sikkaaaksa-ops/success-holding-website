@@ -37,7 +37,7 @@ export default function SectorCard({ sector, locale, index }: SectorCardProps) {
 
   return (
     <Link
-      href={`/${locale}/subsidiaries?sector=${sector.id}`}
+      href={`/${locale}/sectors#${sector.slug}`}
       className="group relative block h-full min-h-0 overflow-hidden rounded-xl bg-brand-charcoal"
     >
         {imgSrc ? (
