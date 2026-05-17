@@ -81,20 +81,17 @@ function SectionTitle({ children }: { children: ReactNode }) {
   return (
     <div>
       <h3
-        className="font-body text-sm font-medium tracking-wide"
-        style={{ color: 'rgba(255,255,255,0.90)', textAlign: 'right' }}
+        className="font-body text-center text-sm font-medium tracking-wide md:text-start"
+        style={{ color: 'rgba(255,255,255,0.90)' }}
       >
         {children}
       </h3>
       <div
+        className="mx-auto mb-5 mt-2 md:mx-0 md:ms-auto"
         style={{
           width: 36,
           height: 2,
           backgroundColor: GOLD,
-          marginTop: 8,
-          marginBottom: 20,
-          marginRight: 0,
-          marginLeft: 'auto',
         }}
       />
     </div>
@@ -183,7 +180,7 @@ export default function Footer() {
         <div className="footer-grid grid gap-12">
           {/* Logo column — first in DOM → rightmost in RTL */}
           <div
-            className="footer-logo-col flex flex-col items-end gap-0 text-right"
+            className="footer-logo-col flex flex-col items-center gap-0 text-center md:items-end md:text-end"
             style={logoParentWrap}
           >
             <Link
@@ -208,12 +205,12 @@ export default function Footer() {
 
           <div className="flex flex-col items-center md:items-end">
             <SectionTitle>{pick('Quick Links', 'روابط سريعة')}</SectionTitle>
-            <ul className="w-full space-y-2" style={{ textAlign: 'right' }}>
+            <ul className="w-full space-y-2 text-center md:text-start">
               {NAV_ITEMS.map((item) => (
                 <li key={item.key}>
                   <Link
                     href={`/${locale}${item.href}`}
-                    className="group flex w-full items-center justify-end transition-colors duration-300 hover:text-[#C09040]"
+                    className="group flex w-full items-center justify-center transition-colors duration-300 hover:text-[#C09040] md:justify-end"
                     style={{
                       gap: 8,
                       fontSize: 13.5,
@@ -330,10 +327,13 @@ export default function Footer() {
         style={{ borderTop: `1px solid ${GOLD_BORDER}` }}
       >
         <div
-          className="mx-auto flex flex-col items-center justify-between gap-3 px-[clamp(20px,5.5vw,80px)] py-5 sm:flex-row"
+          className="mx-auto flex flex-col items-center justify-between gap-3 px-[clamp(20px,5.5vw,80px)] py-5 text-center sm:flex-row md:text-end"
           style={{ maxWidth: 1360 }}
         >
-          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>
+          <span
+            className="w-full md:w-auto"
+            style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}
+          >
             {t('copyright', { year: String(year) })}
           </span>
           <span
