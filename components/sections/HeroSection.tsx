@@ -104,7 +104,7 @@ export default function HeroSection() {
                 locale === 'ar' ? 'leading-[1.22]' : 'leading-tight'
               }`}
             >
-              <span style={{ display: 'block' }}>{headline.line1}</span>
+              <span style={{ display: 'block', marginBottom: '8px' }}>{headline.line1}</span>
               <span style={{ display: 'block' }} className="text-brand-gold">
                 {headline.line2}
               </span>
