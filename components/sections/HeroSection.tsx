@@ -78,7 +78,7 @@ export default function HeroSection() {
           />
 
           <div
-            className="relative flex flex-col justify-center bg-transparent px-[clamp(1.25rem,4vw,3.5rem)] pt-8 pb-16 md:py-16 lg:py-24 md:pt-0"
+            className="relative flex flex-col justify-end md:justify-center bg-transparent px-[clamp(1.25rem,4vw,3.5rem)] pt-0 pb-8 md:pb-52 md:py-16 lg:py-24 md:pt-0"
             dir={locale === 'ar' ? 'rtl' : 'ltr'}
           >
             <div className="relative w-fit min-w-0 max-w-[min(100%,540px)]">
@@ -86,7 +86,7 @@ export default function HeroSection() {
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
-              className="relative z-10 flex max-w-xl flex-col text-start pb-6 md:pb-52 mb-8 md:mb-0"
+              className="relative z-10 flex max-w-xl flex-col text-start mb-8 md:mb-0"
             >
             <motion.div variants={fadeUp}>
               <p className="font-heading text-[10px] md:text-[10.5px] uppercase tracking-[0.28em] text-brand-gold text-shadow-[0_1px_2px_rgba(0,0,0,0.85),0_2px_8px_rgba(0,0,0,0.55),0_0_20px_rgba(0,0,0,0.35)]">
@@ -103,7 +103,7 @@ export default function HeroSection() {
 
             <motion.h1
               variants={fadeUp}
-              className={`mt-8 font-display text-[28px] md:text-[clamp(46px,6.8vw,96px)] font-semibold text-white text-shadow-[0_1px_2px_rgba(0,0,0,0.9),0_2px_12px_rgba(0,0,0,0.65),0_6px_28px_rgba(0,0,0,0.45),0_12px_48px_rgba(0,0,0,0.28)] ${
+              className={`mt-8 font-display text-[clamp(38px,4.5vw,64px)] md:text-[clamp(38px,4.5vw,64px)] font-semibold text-white text-shadow-[0_1px_2px_rgba(0,0,0,0.9),0_2px_12px_rgba(0,0,0,0.65),0_6px_28px_rgba(0,0,0,0.45),0_12px_48px_rgba(0,0,0,0.28)] ${
                 locale === 'ar' ? 'leading-[1.22]' : 'leading-tight'
               }`}
             >
